@@ -1,0 +1,8 @@
+<h2>Hackjournals</h2>
+
+<p> To list issue journals, first select issue id. </p>
+
+<%= form_for :hackjournals, url: show_journals_path do |f| %>
+  <%= f.label "Issue #:" %> <%= f.text_field :issue_id, :required => true, :type => "number" %>
+  <%= f.submit 'Show journals'%>
+<% end %>
