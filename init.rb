@@ -1,8 +1,17 @@
 Redmine::Plugin.register :hackjournals do
   name 'Hackjournals plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  url ''
+  description 'Hack issue journal details'
+  author 'Emre Can Kucukoglu'
+  author_url 'http://eckucukoglu.com'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  requires_redmine version_or_higher: '2.5.2'
+
+  settings({
+     :partial => 'settings/settings',
+     :default => {
+       'label' => 'HackJournals'
+      }
+  })
+
 end
