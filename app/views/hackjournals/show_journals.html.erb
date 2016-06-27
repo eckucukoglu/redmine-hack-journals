@@ -1,1 +1,10 @@
-<h2>Listed journals for </h2>
+
+
+<h2>Journals of issue '<%= @issue.subject if @issue != nil %>' </h2>
+
+
+<% @journals.each do |journal| %>
+    <%= journal.id %>
+
+
+<% end %>
