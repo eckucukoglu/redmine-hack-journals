@@ -1,10 +1,9 @@
-
-
 <h2>Journals of issue '<%= @issue.subject if @issue != nil %>' </h2>
 
-
 <% @journals.each do |journal| %>
-    <%= journal.id %>
-
-
+  <p>
+    <%= journal.id %> (<%= journal.created_on %>) |
+    <%= link_to "Edit", edit_journal_path(:id => journal.id), method: :get %> |
+    <%= link_to "Delete", destroy_journal_path(:id => journal.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
 <% end %>
