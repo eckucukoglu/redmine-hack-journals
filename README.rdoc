@@ -1,3 +1,6 @@
-= hackjournals
+= Redmine HackJournals Plugin
 
-Description goes here
+This is a redmine plugin that can alter issue journals and journal details.
+Only 'admin' can reach plugin from administration menu.
+
+![alt text](https://s-media-cache-ak0.pinimg.com/236x/f7/5b/d5/f75bd560872fc32778d2545bb9ee0862.jpg "Only god can judge me.")
