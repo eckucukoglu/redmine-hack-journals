@@ -2,7 +2,7 @@
 
 <p> To list issue journals, first select issue id. </p>
 
-<%= form_for :hackjournals, url: show_journals_path do |f| %>
+<%= form_for :hackjournals, url: show_hackjournals_path, method: :get do |f| %>
   <%= f.label "Issue #:" %> <%= f.text_field :issue_id, :required => true, :type => "number" %>
   <%= f.submit 'Show journals'%>
 <% end %>
