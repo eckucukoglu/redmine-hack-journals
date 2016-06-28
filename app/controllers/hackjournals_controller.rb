@@ -47,7 +47,16 @@ class HackjournalsController < ApplicationController
   end
 
   def update_journal_details
+    @jdetail = JournalDetail.find(params[:id])
 
+    if @jdetail.update_attributes(:property => params[:jdetail][:property], :prop_key => params[:jdetail][:prop_key],
+                                  :old_value => params[:jdetail][:old_value], :value => params[:jdetail][:value])
+      flash[:success] = "Journal detail updated."
+      redirect_to show_journals_path(:issue_id => params[:issue_id])
+    else
+      flash.now[:alert] = "Journal detail couldn't be updated! Please check the form."
+      render edit_journal_path(:issue_id => params[:issue_id], :id => params[:id])
+    end
   end
 
   def destroy_journal
