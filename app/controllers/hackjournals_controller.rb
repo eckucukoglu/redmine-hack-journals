@@ -18,7 +18,7 @@ class HackjournalsController < ApplicationController
 
   def show_journals
     @issue = Issue.find(params[:issue_id])
-    @journals = Journal.where(journalized_id: @issue.id)
+    @journals = Journal.where(journalized_id: @issue.id).order("created_on ASC")
   end
 
   def edit_journal
