@@ -6,23 +6,28 @@
 
 <h4>Journal properties:</h4>
 
+<table>
 <%= form_for :journal, url: update_journal_path(@issue, @journal), method: :put do |f| %>
-    <p><%= f.label "Notes: " %> <%= f.text_area :notes, cols: "30", rows: "2" %></p>
-    <p><%= f.label "Created on: " %> <%= f.datetime_select :created_on %></p>
-    <%= f.submit 'Update Journal' %>
+    <tr><td><p><%= f.label "User id: " %></td><td> <%= f.text_field :user_id, :type => "number" %></td></p></tr>
+    <tr><td><p><%= f.label "Created on: " %></td> <td><%= f.datetime_select :created_on %></td></p></tr>
+    <tr><td><p><%= f.label "Notes: " %></td><td> <%= f.text_area :notes, cols: "30", rows: "2" %></td></p></tr>
+    <tr><td><%= f.submit 'Update Journal' %></td><td></td></tr>
 <% end %>
-
+</table>
 <br><br><br>
 <h4>Journal details:</h4>
 
+
 <% @jdetails.each do |jdetail| %>
-  <%= form_for :jdetail, url: update_journal_details_path(@issue, @journal, jdetail), method: :put do |f| %>
-    <p>Journal Detail id: <%= jdetail.id%> </p>
-    <p><%= f.label "Property: " %> <%= f.text_field :property, :value => jdetail.property %></p>
-    <p><%= f.label "Property key: " %> <%= f.text_field :prop_key, :value => jdetail.prop_key %></p>
-    <p><%= f.label "Old value: " %> <%= f.text_area :old_value, :value => jdetail.old_value, cols: "30", rows: "2" %></p>
-    <p><%= f.label "Value: " %> <%= f.text_area :value, :value => jdetail.value , cols: "30", rows: "2" %></p>
-    <%= f.submit 'Update Journal Details' %>
-  <% end %>
+  <table>
+    <%= form_for :jdetail, url: update_journal_details_path(@issue, @journal, jdetail), method: :put do |f| %>
+      <tr><td><p>Journal Detail id:</td> <td><%= jdetail.id%></td> </p></tr>
+      <tr><td><p><%= f.label "Property: " %></td> <td><%= f.text_field :property, :value => jdetail.property %></td></p></tr>
+      <tr><td><p><%= f.label "Property key: " %></td><td> <%= f.text_field :prop_key, :value => jdetail.prop_key %></td></p></tr>
+      <tr><td><p><%= f.label "Old value: " %></td><td> <%= f.text_area :old_value, :value => jdetail.old_value, cols: "30", rows: "2" %></td></p></tr>
+      <tr><td><p><%= f.label "Value: " %></td> <td><%= f.text_area :value, :value => jdetail.value , cols: "30", rows: "2" %></td></p></tr>
+      <tr><td><%= f.submit 'Update Journal Details' %></td><td></tr>
+    <% end %>
+  </table>
   <br><br>
 <% end %>

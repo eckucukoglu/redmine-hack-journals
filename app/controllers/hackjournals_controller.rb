@@ -37,7 +37,7 @@ class HackjournalsController < ApplicationController
     @minute = params[:journal]["created_on(5i)"].to_i
     @datetime = DateTime.new(@year, @month, @day, @hour, @minute)
 
-    if @journal.update_attributes(:notes => params[:journal][:notes], :created_on => @datetime)
+    if @journal.update_attributes(:notes => params[:journal][:notes], :created_on => @datetime, :user_id => params[:journal][:user_id])
       flash[:success] = "Journal updated."
       redirect_to show_journals_path(:issue_id => params[:issue_id])
     else
