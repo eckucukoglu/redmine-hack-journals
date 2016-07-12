@@ -18,13 +18,13 @@ class HackjournalsController < ApplicationController
 
   def show_journals
     @issue = Issue.find(params[:issue_id])
-    @journals = Journal.find_all_by_journalized_id(@issue.id)
+    @journals = Journal.where(journalized_id: @issue.id)
   end
 
   def edit_journal
     @issue = Issue.find(params[:issue_id])
     @journal = Journal.find(params[:id])
-    @jdetails = JournalDetail.find_all_by_journal_id(params[:id])
+    @jdetails = JournalDetail.where(journal_id: params[:id])
   end
 
   def update_journal
@@ -42,7 +42,7 @@ class HackjournalsController < ApplicationController
       redirect_to show_journals_path(:issue_id => params[:issue_id])
     else
       flash.now[:alert] = "Journal couldn't be updated! Please check the form."
-      render edit_journal_path(:issue_id => params[:issue_id], :id => params[:id])
+      render edit_issue_journal_path(:issue_id => params[:issue_id], :id => params[:id])
     end
   end
 
@@ -55,7 +55,7 @@ class HackjournalsController < ApplicationController
       redirect_to show_journals_path(:issue_id => params[:issue_id])
     else
       flash.now[:alert] = "Journal detail couldn't be updated! Please check the form."
-      render edit_journal_path(:issue_id => params[:issue_id], :id => params[:id])
+      render edit_issue_journal_path(:issue_id => params[:issue_id], :id => params[:id])
     end
   end
 

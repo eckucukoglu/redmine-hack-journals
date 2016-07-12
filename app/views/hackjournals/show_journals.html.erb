@@ -7,7 +7,7 @@
 <% @journals.each do |journal| %>
   <p>
     #<%= journal.id %> (<%= journal.created_on %>) |
-    <%= link_to "Edit", edit_journal_path(:issue_id => @issue.id, :id => journal.id), method: :get %> |
-    <%= link_to "Delete", destroy_journal_path(:issue_id => @issue.id, :id => journal.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to "Edit", edit_issue_journal_path(:issue_id => @issue.id, :id => journal.id), method: :get %> |
+    <%= link_to "Delete", destroy_issue_journal_path(:issue_id => @issue.id, :id => journal.id), method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 <% end %>
