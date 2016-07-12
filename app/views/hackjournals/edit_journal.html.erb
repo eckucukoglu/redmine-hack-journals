@@ -8,7 +8,7 @@
 
 <table>
 <%= form_for :journal, url: update_journal_path(@issue, @journal), method: :put do |f| %>
-    <tr><td><p><%= f.label "User id: " %></td><td> <%= f.text_field :user_id, :type => "number" %></td></p></tr>
+    <tr><td><p><%= f.label "User: " %></td><td> <%= select :journal, :user_id, options_for_select(@options, @selectedoption), {}, {:multiple => false} %></td></p></tr>
     <tr><td><p><%= f.label "Created on: " %></td> <td><%= f.datetime_select :created_on %></td></p></tr>
     <tr><td><p><%= f.label "Notes: " %></td><td> <%= f.text_area :notes, cols: "30", rows: "2" %></td></p></tr>
     <tr><td><%= f.submit 'Update Journal' %></td><td></td></tr>

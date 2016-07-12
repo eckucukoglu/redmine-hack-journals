@@ -25,6 +25,16 @@ class HackjournalsController < ApplicationController
     @issue = Issue.find(params[:issue_id])
     @journal = Journal.find(params[:id])
     @jdetails = JournalDetail.where(journal_id: params[:id])
+
+    @project_users = Project.find(@issue.project_id).users
+
+    @options = Array.new
+    @selectedoption = @journal.user_id
+
+    @project_users.each do |user|
+      @options.push([user.firstname, user.id])
+    end
+
   end
 
   def update_journal
