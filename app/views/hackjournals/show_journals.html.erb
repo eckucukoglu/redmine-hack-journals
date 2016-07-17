@@ -5,10 +5,12 @@
 <h2>Journals of issue '<%= @issue.subject if @issue != nil %>' </h2>
 
 <table>
+  <% number = 0 %>
   <% @journals.each do |journal| %>
+    <% number += 1 %>
     <tr>
       <td>
-        #<%= journal.id %>
+        #<%= number %>
       </td>
       <td>
         <%= authoring journal.created_on, journal.user, :label => :label_updated_time_by %>

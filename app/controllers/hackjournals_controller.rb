@@ -32,7 +32,7 @@ class HackjournalsController < ApplicationController
     @selectedoption = @journal.user_id
 
     @project_users.each do |user|
-      @options.push([user.firstname, user.id])
+      @options.push([user.firstname + " " + user.lastname, user.id])
     end
 
   end
