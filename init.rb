@@ -7,12 +7,4 @@ Redmine::Plugin.register :hackjournals do
   version '0.0.2'
 
   menu :admin_menu, :hackjournals, { :controller => 'hackjournals', :action => 'index' }, :caption => 'HackJournals'
-
-  settings({
-     :partial => 'settings/settings',
-     :default => {
-       'label' => 'HackJournals'
-      }
-  })
-
 end
