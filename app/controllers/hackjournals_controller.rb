@@ -11,8 +11,8 @@ class HackjournalsController < ApplicationController
     if @issueExist
       redirect_to show_journals_path(issue_id: params[:hackjournals][:issue_id])
     else
-      flash.now[:alert] = "Issue id not exist."
-      render hackjournals_path
+      flash[:error] = "Issue id not exist."
+      redirect_to hackjournals_path
     end
   end
 
@@ -48,10 +48,10 @@ class HackjournalsController < ApplicationController
     @datetime = DateTime.new(@year, @month, @day, @hour, @minute)
 
     if @journal.update_attributes(:notes => params[:journal][:notes], :created_on => @datetime, :user_id => params[:journal][:user_id])
-      flash[:success] = "Journal updated."
+      flash[:notice] = "Journal updated."
       redirect_to show_journals_path(:issue_id => params[:issue_id])
     else
-      flash.now[:alert] = "Journal couldn't be updated! Please check the form."
+      flash.now[:error] = "Journal couldn't be updated! Please check the form."
       render edit_issue_journal_path(:issue_id => params[:issue_id], :id => params[:id])
     end
   end
@@ -61,10 +61,10 @@ class HackjournalsController < ApplicationController
 
     if @jdetail.update_attributes(:property => params[:jdetail][:property], :prop_key => params[:jdetail][:prop_key],
                                   :old_value => params[:jdetail][:old_value], :value => params[:jdetail][:value])
-      flash[:success] = "Journal detail updated."
+      flash[:notice] = "Journal detail updated."
       redirect_to show_journals_path(:issue_id => params[:issue_id])
     else
-      flash.now[:alert] = "Journal detail couldn't be updated! Please check the form."
+      flash.now[:error] = "Journal detail couldn't be updated! Please check the form."
       render edit_issue_journal_path(:issue_id => params[:issue_id], :id => params[:id])
     end
   end
@@ -73,10 +73,10 @@ class HackjournalsController < ApplicationController
     @journal = Journal.find(params[:id])
 
     if @journal.destroy
-      flash[:success] = "Journal deleted."
+      flash[:notice] = "Journal deleted."
       redirect_to show_journals_path(@journal.journalized_id)
     else
-      flash.now[:alert] = "Journal couldn't be deleted!"
+      flash.now[:error] = "Journal couldn't be deleted!"
       render show_journals_path(@journal.journalized_id)
     end
   end
